@@ -1,7 +1,7 @@
 /**
 * File : display.cpp
 * Description : Object to manage the display area on the screen and a few other
-*  things associated with display.
+* things associated with the display.
 * Author(s) : ALucchi
 * Date of creation : 28/10/2007
 * Modification(s) :
@@ -9,8 +9,7 @@
 
 //-------------------------------------------------------------------- INCLUDES
 #include <SDL/SDL.h>
-
-#include <stdio.h> // FILE
+#include <stdio.h>
 
 #include "defs.h"
 #include "display.h"
@@ -27,16 +26,22 @@ Display::~Display()
 	Deinit();
 }
 
+/**
+ * Initialize the display (use the SDL functions)
+ * @param bpp bits-per-pixel value.
+ * @return true if the initialization has been done successfully.
+ */
 bool Display::Init(dword bpp)
 {
 	SDL_VideoInfo	*info;
 	dword	flags = 0;
 	bool fullscr = true;		// Should we run in fullscreen mode ?
-	bool doubleBuf = true;    // Should we try to create a double buffer ?
+	bool doubleBuf = false;    // Should we try to create a double buffer ?
 
 	assert(screen == NULL);
 	
-	// Initialize inner SDL video system ( should be already done since app must call SDL_Init(..) )
+	// Initialize inner SDL video system
+	// FIXME: Should be already done since app must call SDL_Init(..)
 	if(!SDL_WasInit(SDL_INIT_VIDEO))
 	{
 		if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0)
@@ -47,7 +52,6 @@ bool Display::Init(dword bpp)
 	}
 
 	// Check manualy for valid bit-depth, because of a weird bug in SDL
-
 	switch(bpp)
 	{
 		case 8:
@@ -113,14 +117,20 @@ bool Display::Init(dword bpp)
 	return true;
 }
 
+/**
+ * This function allows to shut down the system that has been previously
+ * initialized using the Init method
+ */
 void Display::Deinit()
 {
 	SDL_QuitSubSystem(SDL_INIT_VIDEO);
 	screen = NULL;
 }
 
+/**
+ * Clear the screen
+ */
 void Display::Clear()
-// Clear screen
 {
 	SDL_FillRect(surface, NULL, SCREEN_COLOR);
 }
@@ -157,8 +167,12 @@ void Display::GetPalette(byte *pal)
 	}
 }
 
+
+/**
+ * Flip buffers and wait for synchronisation with screen
+ * @return true on success, false otherwise.
+ */
 bool Display::Flip()
-// Flip buffers and wait for synchronisation with screen
 {
 	return (SDL_Flip(surface) == 0);
 }
