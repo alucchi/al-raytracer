@@ -20,13 +20,13 @@ template <class T>
 class CVector2
 {
 public :
-	/*!
+	/**
 	 *  vector values
 	 */
 	T x, y;
 
-	/*!
-	 *  \brief Constructor
+	/**
+	 * Constructor
 	 */
 	CVector2(T X = 0, T Y = 0);
 
@@ -58,7 +58,7 @@ public :
 };
 
 
-/*!
+/**
  *  Global functions
  */
 template <class T> CVector2<T>   operator * (const CVector2<T>& v, T t);
@@ -70,8 +70,8 @@ template <class T> std::istream& operator >>(std::istream& Stream, CVector2<T>& 
 template <class T> std::ostream& operator <<(std::ostream& Stream, const CVector2<T>& Vector);
 
 //----------------------------------------------------------------------- TYPES
-typedef CVector2<int>   Vector2;
-typedef CVector2<float> Vector2f;
+typedef CVector2<int>   Vector2i;
+typedef CVector2<float> Vector2;
 
 //---------------------------------------------------------------------- INLINES
 #include "Vector2.inl"

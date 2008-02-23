@@ -152,6 +152,18 @@ inline bool CVector3<T>::operator !=(const CVector3<T>& v) const
 }
 
 template <class T>
+inline bool CVector3<T>::operator >(const CVector3<T>& v) const
+{
+    return (x > v.x && y > v.y && z > v.z);
+}
+
+template <class T>
+inline bool CVector3<T>::operator <(const CVector3<T>& v) const
+{
+    return (x < v.x && y < v.y && z < v.z);
+}
+
+template <class T>
 inline CVector3<T>::operator T*()
 {
     return &x;
@@ -173,6 +185,12 @@ template <class T>
 inline CVector3<T> operator *(T t, const CVector3<T>& v)
 {
     return v * t;
+}
+
+template <class T>
+inline CVector3<T> operator /(T t, const CVector3<T>& v)
+{
+    return CVector3<T>(t / v.x, t / v.y, t/v.z);
 }
 
 template <class T>

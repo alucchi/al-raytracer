@@ -1,0 +1,7 @@
+TODO :
+* Implement IntersectBox for each primitive :
+	- triangle (see http://www.realtimerendering.com/int/ and
+	http://www.cs.lth.se/home/Tomas_Akenine_Moller/code/tribox3.txt)
+* ray.ID : doesn't seem to improve efficiency ?
+* Check "advance ray to scene bounding box boundary"
+* 3ds : efficient way to compute normals per fragment ?

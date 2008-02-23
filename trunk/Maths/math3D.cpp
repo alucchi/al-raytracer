@@ -15,10 +15,14 @@ MathLuts *mathLuts = NULL;
 
 //------------------------------------------------------------------- FUNCTIONS
 
+/**
+ * Initialize method
+ */
 void mathInit(void)
 {
 	double val = 0;
 	mathLuts = new MathLuts;
+	// Create cos and sin tables
 	for(int i = 0; i < 360; i++, val += RAD)
 	{
 		mathLuts->sin[i] = (float)sin(val);
@@ -26,6 +30,10 @@ void mathInit(void)
 	}
 }
 
+/**
+ * This function should be called when the use of the math library is no
+ * necessary.
+ */
 void mathDeinit(void)
 {
 	if(mathLuts) {
