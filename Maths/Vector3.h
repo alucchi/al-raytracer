@@ -21,7 +21,7 @@ template <class T>
 class CVector3
 {
 public :
-	/*!
+	/**
 	 *  vector values
 	 */
 	T x, y, z;
@@ -49,6 +49,8 @@ public :
 
     bool operator ==(const CVector3<T>& v) const;
     bool operator !=(const CVector3<T>& v) const;
+    bool operator <(const CVector3<T>& v) const;
+    bool operator >(const CVector3<T>& v) const;
 
     operator T*();
 
@@ -57,21 +59,22 @@ public :
 };
 
 
-/*!
+/**
  *  Global functions
  */
 template <class T> CVector3<T>   operator * (const CVector3<T>& v, T t);
 template <class T> CVector3<T>   operator / (const CVector3<T>& v, T t);
 template <class T> CVector3<T>   operator * (T t, const CVector3<T>& v);
+template <class T> CVector3<T>   operator / (T t, const CVector3<T>& v);
 template <class T> T             Dot  (const CVector3<T>& v1, const CVector3<T>& v2);
 template <class T> CVector3<T>   Cross(const CVector3<T>& v1, const CVector3<T>& v2);
 template <class T> std::istream& operator >>(std::istream& Stream, CVector3<T>& Vector);
 template <class T> std::ostream& operator <<(std::ostream& Stream, const CVector3<T>& Vector);
 
-/*!
+/**
  * Vector by matrix product. Returns a vector since:
  * 
- * 1x3 matrix ( the vector ) by 4x4 matrix results in 1x4 matrix. After we strip
+ * 1x3 matrix (the vector) by 4x4 matrix results in 1x4 matrix. After we strip
  * the last (unused) row element, we get a new vector.
  */
 template <class T> CVector3<T> operator*(const CVector3<T>& vec, const Mat4x4& mat);
