@@ -3,7 +3,7 @@ Changes :
 v2.0
 - Anti-aliasing
 - Spatial sub-division using a grid (other structures such as kd-trees could be used)
-- Added the import of 3D model (3DS format).
+- Added the import of 3D model (ASE format).
 
 -------------------------------------------------------------------------------
 Papers :
