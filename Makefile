@@ -6,16 +6,16 @@ RM   = @rm -f
 STTY = @stty
 TPUT = @tput
 
-INTERFACES   = display.h rayTracer.h rtObjects.h Maths/math3D.h Maths/Matrix4.h
+INTERFACES   = ase.h display.h rayTracer.h rtObjects.h Maths/math3D.h Maths/Matrix4.h scene.h
 REALISATIONS = $(INTERFACES:.h=.cpp) main.cpp
 OBJECTS       = $(REALISATIONS:.cpp=.o)
 
-CFLAG        = -g
+CFLAG        = -O2 #-g
 LDFLAG = -lSDLmain -lSDL
 EXECUTABLE = rayTracer
 INCLUDE = -I Maths
 
-%.o : %.cpp
+%.o : %.cpp %.h defs.h
 	$(ECHO) "Compiling $< -> $(<:.cpp=.o)"
 	$(CC) $(INCLUDE) $(CFLAG) -c $< -o $(<:.cpp=.o)
 

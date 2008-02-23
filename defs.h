@@ -20,18 +20,33 @@
 
 #include <SDL/SDL.h>
 
+#ifdef DEBUG
+	#include <iostream>
+	using namespace std;
+#endif
+
 //---------------------------------------------------------------------- CONSTS
 
 /* Debug */
+#define DEBUG
+
+//#define VERTEX_NORMAL
 
 #define TITLE	"Ray tracer by Aurelien Lucchi"
 #define SCREEN_COLOR	0xFFFFFF
 
 /* Screen sizes */	
-#define SCR_WIDTH 640
-#define SCR_HEIGHT 480
+#define SCR_WIDTH 1024 //640
+#define SCR_HEIGHT 800 //480
 #define SCR_BPP	32 // under review (we should use 16 bits under Windows)
 
+/* Size of the grid used for the spatial division of the scene 
+ * See Scene::BuildGrid()
+ */
+#define GRIDSIZE 16
+#define GRIDSHIFT 4
+
+#define EPSILON 0.1f
 
 //---------------------------------------------------------------------- MACROS
 
