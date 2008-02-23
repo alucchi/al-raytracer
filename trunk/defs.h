@@ -28,7 +28,7 @@
 //---------------------------------------------------------------------- CONSTS
 
 /* Debug */
-#define DEBUG
+//#define DEBUG
 
 //#define VERTEX_NORMAL
 
