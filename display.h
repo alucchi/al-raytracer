@@ -1,7 +1,7 @@
 /**
 * File : display.h
 * Description : Object to manage the display area on the screen and a few other
-*  things associated with display.
+* things associated with the display.
 * Author(s) : ALucchi
 * Date of creation : 28/10/2007
 * Modification(s) :
@@ -18,35 +18,32 @@
 
 class Display
 {
-
 private:
-
-	Screen		screen;		// Screen's surface
-
-	SDL_Surface* surface; // we must keep the surface to use SDL functions
+	// Screen's surface
+	Screen		screen;
+	// Pointer used to call the SDL functions
+	SDL_Surface* surface;
 
 public:
-
 	Display();
 	~Display();
 	
-	bool	Init(dword bpp);
-	void	Deinit();
+	void Deinit();
+	bool Init(dword bpp);	
 
 	int	SetPalette(const L3DC_Color* pal);
-	void	GetPalette(byte *pal);
+	void GetPalette(byte *pal);
 	
-	void	Clear();
-	// Clear screen
+	// Clear the display
+	void Clear();	
 
-	bool	Flip();
-	// Flip buffers and wait for synchronisation with screen
+	// Flip back and front buffers and wait for synchronisation with screen
+	bool Flip();	
 
-	int		LoadBmp(char* name);
+	int	LoadBmp(char* name);
 
-	Screen	GetScreen();
 	// Get a pointer on the screen
-
+	Screen	GetScreen();
 };
 
 #endif // DISPLAY_H
